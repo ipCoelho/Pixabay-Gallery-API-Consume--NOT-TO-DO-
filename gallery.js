@@ -6,24 +6,20 @@ const clearElement = (htmlElement) => {
     }
 }
 const searchImages = async (event) => {
-    // Get the event from the 'keypress' that delivers an object.
     if (event.key === 'Enter') {
-        // Get the value of the input, by the keypress, using the properties 'event.target.value'.
-        const breed = event.target.value;
-        // Getting the API url and saving into a const.
-        const apiUrl = `https://dog.ceo/api/breed/${breed}/images`;
-        // Using the method fetch(), and saving the object, into a const; also using the property 'await' to deliver the promisse properly.
+        const search = event.target.value;
+        const apiUrl = `https://pixabay.com/api/?key=24041695-05863ddbee6a5255c478b284f&q=${search}&image_type=photo`;
         const apiFetch = await fetch(apiUrl);
-        // Using the method .json() to transform the object into a json, and also saving into a const.
         const apiJson = await apiFetch.json();
-        console.log(apiJson);
+        
+        // This syntax 'apiJson.hits[0]' tracks the array on the element, now it's needed to use the reduce() to get only the largeImageURL and storage all on a single date.
+        console.log(apiJson.hits[0]);
 
-        clearElement(document.querySelector('.gallery-section'))
-        clearElement(document.querySelector('.slide-section'))
+        // clearElement(document.querySelector('.gallery-section'))
+        // clearElement(document.querySelector('.slide-section'))
 
-        // Using the both method created to render the gallery and also the slides, the '.message' is 'key' on the json which contain the array with all the image URLs.
-        renderGallery(apiJson.message);
-        renderSlide(apiJson.message);
+        // renderGallery(apiJson.message);
+        // renderSlide(apiJson.message);
     }
 }
 
@@ -69,5 +65,27 @@ const createSlideItem = (urlImage, index, array) => {
 const renderGallery = (images) => images.forEach(createGalleryItem)
 const renderSlide = (images) => images.forEach(createSlideItem)
 
-
 document.querySelector('.search-container input').addEventListener('keypress', searchImages)
+
+
+// const searchImages = async (event) => {
+//     // Get the event from the 'keypress' that delivers an object.
+//     if (event.key === 'Enter') {
+//         // Get the value of the input, by the keypress, using the properties 'event.target.value'.
+//         const breed = event.target.value;
+//         // Getting the API url and saving into a const.
+//         const apiUrl = `https://dog.ceo/api/breed/${breed}/images`;
+//         // Using the method fetch(), and saving the object, into a const; also using the property 'await' to deliver the promisse properly.
+//         const apiFetch = await fetch(apiUrl);
+//         // Using the method .json() to transform the object into a json, and also saving into a const.
+//         const apiJson = await apiFetch.json();
+//         console.log(apiJson);
+
+//         clearElement(document.querySelector('.gallery-section'))
+//         clearElement(document.querySelector('.slide-section'))
+
+//         // Using the both method created to render the gallery and also the slides, the '.message' is 'key' on the json which contain the array with all the image URLs.
+//         renderGallery(apiJson.message);
+//         renderSlide(apiJson.message);
+//     }
+// }
