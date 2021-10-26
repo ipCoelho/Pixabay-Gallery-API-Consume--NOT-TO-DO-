@@ -19,8 +19,14 @@ header{
     display: flex;
     justify-content: center;
     align-items: center;  
-    color: white;
+    color: black;
+    background-color: #FFF;
     margin-bottom: 10px;
+}
+header a{
+    display: flex;
+    width: 10vw;
+    height: 50%;
 }
 main{
     flex-grow: 1;
