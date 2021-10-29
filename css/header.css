@@ -1,0 +1,17 @@
+
+header{
+    height: 60px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;  
+    color: #191b26;
+    background-color: #FFF;
+    padding: 10px 8px 20px 8px;
+    /* margin-bottom: 10px; */
+}
+header a{
+    display: flex;
+    width: 10vw;
+    height: 50%;
+}
